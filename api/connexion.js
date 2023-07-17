@@ -2,19 +2,19 @@ const mysql = require('mysql');
 
 // Configurer la connexion à la base de données MySQL
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '*****',
-    database: 'gestion_projet_commune'
-  });
-  
-  // Établir la connexion à la base de données
-  connection.connect((err) => {
-    if (err) {
-      console.error('Erreur de connexion à la base de données :', err);
-    } else {
-      console.log('Connecté à la base de données MySQL');
-    }
-  });
+  host: 'localhost',
+  user: 'root',
+  password: '*****',
+  database: 'gestion_projet_commune'
+});
 
-  module.exports = connection;
+// Établir la connexion à la base de données
+connection.connect((err) => {
+  if (err) {
+    console.error('Erreur de connexion à la base de données :', err);
+  } else {
+    console.log('Connecté à la base de données MySQL');
+  }
+});
+
+module.exports = connection;
