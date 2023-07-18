@@ -3,8 +3,8 @@ const mysql = require('mysql');
 // Configurer la connexion à la base de données MySQL
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: '*****',
+  user: 'thyler',
+  password: 'k',
   database: 'gestion_projet_commune'
 });
 

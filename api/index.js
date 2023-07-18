@@ -172,8 +172,43 @@ const Projet = () => {
       }
     });
   })
+  
+  app.get('/allData', (req, res) => {
+    connection.query("SELECT ID_Projet as id,  Nom_Projet as titre, Statut as stat, Responsable as resp FROM Projets order by Statut", (err, rows) => {
+      if (err) {
+        console.error('Erreur lors de la récupération des projets :', err);
+        res.status(500).send('Erreur lors de la récupération des projets');
+      } else {
+        res.status(200).json(rows);
+      }
+    });
+  })
+  
+  app.get('/nbPro', (req, res) => {
+    connection.query("SELECT count(ID_Projet) as nb FROM Projets", (err, rows) => {
+      if (err) {
+        console.error('Erreur lors de la récupération des projets :', err);
+        res.status(500).send('Erreur lors de la récupération des projets');
+      } else {
+        res.status(200).json(rows);
+      }
+    });
+  })
+app.post('/markPro', (req, res) => {
+    const {val,id} = req.body
+    connection.query("UPDATE Projets set Statut = ? where Id_Projet = ?",[val,id], (err, rows) => {
+      if (err) {
+        console.error('Erreur lors de la récupération des projets :', err);
+        res.status(500).send('Une erreur s\'est produite');
+      } else {
+        res.status(200).send(`Le projet ${id} a ete marque comme ${val} `);
+      }
+    });
+  })
+
 
   return app;
 };
 
 module.exports = Projet;
+

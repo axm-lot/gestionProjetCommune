@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.11.3-MariaDB, for debian-linux-gnu (x86_64)
+-- MariaDB dump 10.19  Distrib 10.6.10-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: gestion_projet_commune
 -- ------------------------------------------------------
--- Server version	10.11.3-MariaDB-1
+-- Server version	10.6.10-MariaDB-1+b1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `Communication` (
   PRIMARY KEY (`ID_Communication`),
   KEY `ID_Projet` (`ID_Projet`),
   CONSTRAINT `Communication_ibfk_1` FOREIGN KEY (`ID_Projet`) REFERENCES `Projets` (`ID_Projet`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,8 +40,7 @@ CREATE TABLE `Communication` (
 
 LOCK TABLES `Communication` WRITE;
 /*!40000 ALTER TABLE `Communication` DISABLE KEYS */;
-INSERT INTO `Communication` VALUES
-('COMM1','PROJ1','Travaux d\'Urgence:Rehabilitation d\'infrastructure d\'eau potable:EntrepriseAZ:1mois','2023-07-03','Affiche:FB');
+INSERT INTO `Communication` VALUES ('COMM1','PROJ1','Travaux d\'Urgence:Rehabilitation d\'infrastructure d\'eau potable:EntrepriseAZ:1mois','2023-07-03','Affiche:FB');
 /*!40000 ALTER TABLE `Communication` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +57,7 @@ CREATE TABLE `Parties_prenantes` (
   `Description` text DEFAULT NULL,
   `Contact` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID_PartiePrenante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +87,7 @@ CREATE TABLE `Projets` (
   `Budget` decimal(30,2) DEFAULT NULL,
   `image` blob DEFAULT NULL,
   PRIMARY KEY (`ID_Projet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,12 +96,7 @@ CREATE TABLE `Projets` (
 
 LOCK TABLES `Projets` WRITE;
 /*!40000 ALTER TABLE `Projets` DISABLE KEYS */;
-INSERT INTO `Projets` VALUES
-('PROJ1','CONSTRUCTION DE ROUTE','BOULEVARD:25KM:Ambalax:Ambalay','2023-07-05','2023-12-24','En cours','Mairie',2000000.00,NULL),
-('PROJ2','CONSTRUCTION DE PONT','BETON:15M:Ambalay:30PERS','2023-07-04','2023-12-23','Suspendu','Mairie',5000000.00,NULL),
-('PROJ3','REHABILITATION DE BUREAU','Commune:5Salles:Hotital:2pieces','2023-07-03','2023-12-22','Termine','Mairie',1000000.00,'/home/axm/Desktop/pre/plan.jpg'),
-('PROJ4','REHABILITATION DE PONT','CommuneA:CommuneB:15M:','2023-07-03','2023-12-22','Termine','Mairie',2500000.00,'/home/axm/Desktop/pre/plan.jpg'),
-('PROJ5','REHABILITATION DE PONT','CommuneA:CommuneB:15M:','2023-07-03','2023-12-22','Suspendu','Mairie',2500000.00,'/home/axm/Desktop/pre/plan.jpg');
+INSERT INTO `Projets` VALUES ('PROJ1','CONSTRUCTION DE ROUTE','BOULEVARD:25KM:Ambalax:Ambalay','2023-07-05','2023-12-24','En cours','Mairie',2000000.00,NULL),('PROJ2','CONSTRUCTION DE PONT','BETON:15M:Ambalay:30PERS','2023-07-04','2023-12-23','En cours','Mairie',5000000.00,NULL),('PROJ3','REHABILITATION DE BUREAU','Commune:5Salles:Hotital:2pieces','2023-07-03','2023-12-22','Termine','Mairie',1000000.00,'/home/axm/Desktop/pre/plan.jpg'),('PROJ4','REHABILITATION DE PONT','CommuneA:CommuneB:15M:','2023-07-03','2023-12-22','Suspendu','Mairie',2500000.00,'/home/axm/Desktop/pre/plan.jpg'),('PROJ5','REHABILITATION DE PONT','CommuneA:CommuneB:15M:','2023-07-03','2023-12-22','Suspendu','Mairie',2500000.00,'/home/axm/Desktop/pre/plan.jpg');
 /*!40000 ALTER TABLE `Projets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +114,7 @@ CREATE TABLE `Ressources` (
   `Disponibilité` tinyint(1) DEFAULT NULL,
   `Quantité` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_Ressource`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +145,7 @@ CREATE TABLE `Taches` (
   PRIMARY KEY (`ID_Tâche`),
   KEY `ID_Projet` (`ID_Projet`),
   CONSTRAINT `Taches_ibfk_1` FOREIGN KEY (`ID_Projet`) REFERENCES `Projets` (`ID_Projet`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,8 +154,7 @@ CREATE TABLE `Taches` (
 
 LOCK TABLES `Taches` WRITE;
 /*!40000 ALTER TABLE `Taches` DISABLE KEYS */;
-INSERT INTO `Taches` VALUES
-('TASK1','PROJ1','Travaux d\'Urgence:Rehabilitation d\'infrastructure d\'eau potable:1000 personne','2023-07-04','2023-08-08','En cours','Technicien','Urgent');
+INSERT INTO `Taches` VALUES ('TASK1','PROJ1','Travaux d\'Urgence:Rehabilitation d\'infrastructure d\'eau potable:1000 personne','2023-07-04','2023-08-08','En cours','Technicien','Urgent');
 /*!40000 ALTER TABLE `Taches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +169,7 @@ CREATE TABLE `login` (
   `name` varchar(40) NOT NULL,
   `mdp` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,8 +178,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES
-('admin','admin');
+INSERT INTO `login` VALUES ('admin','admin');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -199,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-18  7:57:22
+-- Dump completed on 2023-07-18 17:36:42
