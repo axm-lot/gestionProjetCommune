@@ -86,6 +86,7 @@ CREATE TABLE `Projets` (
   `Statut` varchar(20) DEFAULT NULL,
   `Responsable` varchar(255) DEFAULT NULL,
   `Budget` decimal(30,2) DEFAULT NULL,
+  `image` blob DEFAULT NULL,
   PRIMARY KEY (`ID_Projet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -97,8 +98,11 @@ CREATE TABLE `Projets` (
 LOCK TABLES `Projets` WRITE;
 /*!40000 ALTER TABLE `Projets` DISABLE KEYS */;
 INSERT INTO `Projets` VALUES
-('PROJ1','CONSTRUCTION DE ROUTE','BOULEVARD:25KM:Ambalax:Ambalay','2023-07-05','2023-12-24','En cours','Mairie',2000000.00),
-('PROJ2','CONSTRUCTION DE PONT','BETON:15M:Ambalay:30PERS','2023-07-04','2023-12-23','Annule','Mairie',5000000.00);
+('PROJ1','CONSTRUCTION DE ROUTE','BOULEVARD:25KM:Ambalax:Ambalay','2023-07-05','2023-12-24','En cours','Mairie',2000000.00,NULL),
+('PROJ2','CONSTRUCTION DE PONT','BETON:15M:Ambalay:30PERS','2023-07-04','2023-12-23','Suspendu','Mairie',5000000.00,NULL),
+('PROJ3','REHABILITATION DE BUREAU','Commune:5Salles:Hotital:2pieces','2023-07-03','2023-12-22','Termine','Mairie',1000000.00,'/home/axm/Desktop/pre/plan.jpg'),
+('PROJ4','REHABILITATION DE PONT','CommuneA:CommuneB:15M:','2023-07-03','2023-12-22','Termine','Mairie',2500000.00,'/home/axm/Desktop/pre/plan.jpg'),
+('PROJ5','REHABILITATION DE PONT','CommuneA:CommuneB:15M:','2023-07-03','2023-12-22','Suspendu','Mairie',2500000.00,'/home/axm/Desktop/pre/plan.jpg');
 /*!40000 ALTER TABLE `Projets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,6 +164,31 @@ INSERT INTO `Taches` VALUES
 ('TASK1','PROJ1','Travaux d\'Urgence:Rehabilitation d\'infrastructure d\'eau potable:1000 personne','2023-07-04','2023-08-08','En cours','Technicien','Urgent');
 /*!40000 ALTER TABLE `Taches` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `name` varchar(40) NOT NULL,
+  `mdp` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES
+('admin','admin');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -170,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-09 15:32:09
+-- Dump completed on 2023-07-18  7:57:22
